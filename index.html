@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FBA新商品特典プログラム（2026）</title>
+<style>
+/* ── Reset & Base ───────────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans JP","Noto Sans SC","Noto Sans",Arial,sans-serif;color:#111;background:#fff;font-size:15px;line-height:1.7}
+a{color:inherit;text-decoration:none}
+/* ── Tokens (matches sell.amazon.co.jp palette) ─────────────────── */
+:root{
+  --squid-ink:#232F3E;
+  --squid-dark:#131A22;
+  --storm:#444;
+  --granite:#666;
+  --cumulus:#aaa;
+  --horizon:#f3f3f3;
+  --aqua:#00a8cc;
+  --orange:#FF9900;
+  --orange-dark:#e47911;
+  --green:#067D62;
+  --white:#fff;
+  --max-w:1200px;
+}
+/* ── Lang toggle bar ────────────────────────────────────────────── */
+.lang-bar{background:var(--squid-dark);padding:8px 40px;display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.lang-btn{background:transparent;border:1px solid #555;color:#ccc;padding:4px 14px;border-radius:3px;font-size:12px;cursor:pointer;transition:all .15s}
+.lang-btn.active{background:var(--orange);color:#111;border-color:var(--orange);font-weight:700}
+.lang-btn:hover:not(.active){border-color:#aaa;color:#fff}
+/* ── SWB banner ─────────────────────────────────────────────────── */
+.swb{background:#49850F;padding:8px 40px;display:flex;align-items:center;justify-content:space-between}
+.swb-text{color:#fff;font-size:13px;font-weight:600}
+.swb-link{color:#fff;text-decoration:underline;font-size:13px}
+/* ── Nav ────────────────────────────────────────────────────────── */
+nav{background:var(--squid-ink);padding:0 40px;height:54px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:28px}
+.nav-logo-text{color:#fff;font-size:20px;font-weight:700;letter-spacing:-.5px}
+.nav-logo-text span{color:var(--orange)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:#ddd;font-size:13px;font-weight:400}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:transparent;border:1px solid #888;color:#fff;padding:5px 16px;border-radius:3px;font-size:13px;cursor:pointer}
+/* ── Breadcrumb ─────────────────────────────────────────────────── */
+.breadcrumb{background:var(--squid-ink);padding:10px 40px;border-top:1px solid #3a4a5a}
+.breadcrumb span{color:#8a9ab0;font-size:12px}
+.breadcrumb span a{color:var(--aqua)}
+.breadcrumb span .sep{margin:0 6px;color:#556}
+/* ── Hero ────────────────────────────────────────────────────────── */
+.hero{background:var(--squid-ink);padding:56px 40px 52px;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;max-width:100%}
+.hero-inner{max-width:var(--max-w);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start}
+.hero-eyebrow{display:inline-block;background:var(--orange);color:#111;font-size:11px;font-weight:700;padding:3px 10px;border-radius:2px;margin-bottom:12px;letter-spacing:.5px}
+.hero h1{color:#fff;font-size:32px;font-weight:700;line-height:1.25;margin-bottom:16px}
+.hero-desc{color:#99aabb;font-size:15px;line-height:1.8;margin-bottom:28px;max-width:540px}
+.dual-cta{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.btn-primary{display:inline-block;background:var(--orange);color:#111;font-size:14px;font-weight:700;padding:11px 24px;border-radius:4px;border:none;cursor:pointer;transition:background .15s}
+.btn-primary:hover{background:var(--orange-dark)}
+.btn-secondary{display:inline-block;background:transparent;color:var(--orange);border:1.5px solid var(--orange);font-size:13px;font-weight:600;padding:9px 20px;border-radius:4px;transition:all .15s}
+.btn-secondary:hover{background:rgba(255,153,0,.1)}
+.hero-footnote{color:#667788;font-size:11px;margin-top:8px}
+/* Hero stat cards */
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px 18px}
+.stat-num{font-size:24px;font-weight:800;color:var(--orange)}
+.stat-label{font-size:11px;color:#8899aa;margin-top:3px}
+/* ── Notice banner ───────────────────────────────────────────────── */
+.notice{background:#FFF8E7;border-left:4px solid var(--orange);padding:14px 40px;font-size:13px;color:#333;line-height:1.7}
+.notice strong{color:#b35000}
+/* ── Section commons ─────────────────────────────────────────────── */
+.section{padding:56px 40px}
+.section-inner{max-width:var(--max-w);margin:0 auto}
+.section.bg-light{background:var(--horizon)}
+.section-label{font-size:11px;font-weight:700;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.section h2{font-size:26px;font-weight:700;margin-bottom:8px;color:var(--squid-ink)}
+.section-intro{font-size:15px;color:var(--storm);max-width:680px;margin-bottom:36px;line-height:1.8}
+/* ── Tile grid ───────────────────────────────────────────────────── */
+.tile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile-wrap{background:#fff;border:1.5px solid #d5e3f0;border-radius:10px;padding:24px 20px;transition:box-shadow .2s,border-color .2s;position:relative}
+.tile-wrap:hover{box-shadow:0 4px 20px rgba(0,0,0,.09);border-color:var(--aqua)}
+.tile-wrap.jp-only{border-color:#f0c040;background:#fffdf5}
+.tile-icon{font-size:28px;margin-bottom:12px}
+.tile-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;margin-bottom:10px}
+.tag-new{background:#e5f4e8;color:#1a7a30}
+.tag-enhanced{background:#e8effe;color:#1a56cc}
+.tag-jp{background:#fff3cd;color:#7a5a00}
+.tile-wrap h3{font-size:14px;font-weight:700;margin-bottom:8px;line-height:1.4}
+.tile-wrap p{font-size:13px;color:var(--storm);line-height:1.7}
+.tile-val{font-size:22px;font-weight:800;color:var(--orange);margin:6px 0 4px}
+.jp-badge{position:absolute;top:12px;right:12px;background:var(--orange);color:#111;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px}
+/* ── Steps ───────────────────────────────────────────────────────── */
+.steps-wrap{display:flex;flex-direction:column;gap:0;max-width:760px}
+.step-row{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #e5e8ec;align-items:flex-start}
+.step-row:last-child{border-bottom:none}
+.step-num{min-width:42px;height:42px;background:var(--orange);color:#111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;flex-shrink:0}
+.step-body h3{font-size:16px;font-weight:700;margin-bottom:5px}
+.step-body p{font-size:14px;color:var(--storm)}
+.step-alert{background:#FFF8E7;border:1px solid #FFD966;border-radius:5px;padding:10px 14px;margin-top:10px;font-size:13px;color:#333}
+/* ── Comparison table ────────────────────────────────────────────── */
+.compare-table{width:100%;border-collapse:collapse;font-size:14px}
+.compare-table thead tr{background:var(--squid-ink);color:#fff}
+.compare-table th{padding:13px 18px;text-align:left;font-weight:600}
+.compare-table th:first-child{width:200px}
+.compare-table td{padding:12px 18px;border-bottom:1px solid #e8eaed;vertical-align:top}
+.compare-table tr:nth-child(even) td{background:#f8f9fa}
+.compare-table td:first-child{font-weight:600;color:var(--squid-ink)}
+.old-val{color:#999}
+.new-val{color:var(--green);font-weight:600}
+.arrow-col{color:var(--orange);font-size:16px;font-weight:700;text-align:center;width:36px}
+/* ── Footer CTA ──────────────────────────────────────────────────── */
+.footer-cta{background:var(--squid-ink);color:#fff;padding:52px 40px;text-align:center}
+.footer-cta h2{font-size:26px;font-weight:700;margin-bottom:10px}
+.footer-cta p{color:#8a9ab0;font-size:14px;margin-bottom:24px}
+.footer-cta .footnote{color:#556677;font-size:11px;margin-top:14px}
+/* ── Footer nav ──────────────────────────────────────────────────── */
+footer{background:#131A22;padding:24px 40px;display:flex;align-items:center;justify-content:space-between}
+footer .foot-links{display:flex;gap:20px}
+footer a{color:#8a9ab0;font-size:12px}
+footer a:hover{color:#fff}
+footer .copy{color:#556;font-size:12px}
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media(max-width:1000px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-stats{display:none}
+  .tile-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .tile-grid{grid-template-columns:1fr}
+  .section,.hero{padding:40px 20px}
+  nav,.breadcrumb,.swb,.lang-bar,.notice,.footer-cta,footer{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- LANG TOGGLE -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('jp')">日本語</button>
+  <button class="lang-btn" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('cn')">中文</button>
+</div>
+
+<!-- SWB BANNER -->
+<div class="swb">
+  <span class="swb-text" data-i18n="swb_text"></span>
+  <a href="#" class="swb-link" data-i18n="swb_link"></a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo-text">amazon <span>出品サービス</span></div>
+  <div class="nav-links">
+    <a href="#" data-i18n="nav_start"></a>
+    <a href="#" data-i18n="nav_pricing"></a>
+    <a href="#" data-i18n="nav_fba"></a>
+    <a href="#" data-i18n="nav_tools"></a>
+  </div>
+  <button class="nav-cta" data-i18n="nav_login"></button>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <span>
+    <a href="#" data-i18n="nav_fba"></a>
+    <span class="sep">›</span>
+    <span data-i18n="page_title"></span>
+  </span>
+</div>
+
+<!-- HERO -->
+<div style="background:var(--squid-ink);padding:56px 40px 52px">
+  <div class="hero-inner" style="max-width:var(--max-w);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start">
+    <div>
+      <span class="hero-eyebrow" data-i18n="hero_badge"></span>
+      <h1 style="color:#fff;font-size:32px;font-weight:700;line-height:1.25;margin-bottom:16px" data-i18n="page_title"></h1>
+      <p style="color:#99aabb;font-size:15px;line-height:1.8;margin-bottom:28px;max-width:540px" data-i18n="hero_desc"></p>
+      <div class="dual-cta">
+        <a href="#" class="btn-primary" data-i18n="cta_primary"></a>
+        <a href="#benefits" class="btn-secondary" data-i18n="cta_secondary"></a>
+      </div>
+      <p style="color:#556677;font-size:11px;margin-top:10px" data-i18n="hero_footnote"></p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-num" data-i18n="stat1_num"></div><div class="stat-label" data-i18n="stat1_label"></div></div>
+      <div class="stat-card"><div class="stat-num" data-i18n="stat2_num"></div><div class="stat-label" data-i18n="stat2_label"></div></div>
+      <div class="stat-card"><div class="stat-num" data-i18n="stat3_num"></div><div class="stat-label" data-i18n="stat3_label"></div></div>
+      <div class="stat-card"><div class="stat-num" data-i18n="stat4_num"></div><div class="stat-label" data-i18n="stat4_label"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTICE -->
+<div class="notice"><span data-i18n="notice_text"></span></div>
+
+<!-- BENEFITS -->
+<div class="section" id="benefits">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="benefits_label"></div>
+    <h2 data-i18n="benefits_heading"></h2>
+    <p class="section-intro" data-i18n="benefits_intro"></p>
+    <div class="tile-grid">
+      <!-- Tile 1 -->
+      <div class="tile-wrap">
+        <span class="tile-tag tag-enhanced" data-i18n="tag_enhanced"></span>
+        <div class="tile-icon">💴</div>
+        <h3 data-i18n="t1_title"></h3>
+        <p data-i18n="t1_body"></p>
+      </div>
+      <!-- Tile 2 -->
+      <div class="tile-wrap">
+        <span class="tile-tag tag-enhanced" data-i18n="tag_enhanced"></span>
+        <div class="tile-icon">📦</div>
+        <h3 data-i18n="t2_title"></h3>
+        <p data-i18n="t2_body"></p>
+      </div>
+      <!-- Tile 3 -->
+      <div class="tile-wrap">
+        <span class="tile-tag tag-new" data-i18n="tag_new"></span>
+        <div class="tile-icon">🎟️</div>
+        <h3 data-i18n="t3_title"></h3>
+        <div class="tile-val" data-i18n="t3_val"></div>
+        <p data-i18n="t3_body"></p>
+      </div>
+      <!-- Tile 4 — JP only -->
+      <div class="tile-wrap jp-only" id="tile-psa">
+        <div class="jp-badge" data-i18n="jp_only"></div>
+        <span class="tile-tag tag-jp" data-i18n="tag_jp"></span>
+        <div class="tile-icon">⚡</div>
+        <h3 data-i18n="t4_title"></h3>
+        <p data-i18n="t4_body"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BEFORE/AFTER TABLE -->
+<div class="section bg-light">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="compare_label"></div>
+    <h2 data-i18n="compare_heading"></h2>
+    <p class="section-intro" data-i18n="compare_intro"></p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th data-i18n="col_item"></th>
+          <th data-i18n="col_nsp1"></th>
+          <th style="width:36px"></th>
+          <th data-i18n="col_nsp2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-i18n="row1_item"></td><td class="old-val" data-i18n="row1_old"></td><td class="arrow-col">→</td><td class="new-val" data-i18n="row1_new"></td></tr>
+        <tr><td data-i18n="row2_item"></td><td class="old-val" data-i18n="row2_old"></td><td class="arrow-col">→</td><td class="new-val" data-i18n="row2_new"></td></tr>
+        <tr><td data-i18n="row3_item"></td><td class="old-val" data-i18n="row3_old"></td><td class="arrow-col">→</td><td class="new-val" data-i18n="row3_new"></td></tr>
+        <tr><td data-i18n="row4_item"></td><td class="old-val" data-i18n="row4_old"></td><td class="arrow-col">→</td><td class="new-val" data-i18n="row4_new"></td></tr>
+        <tr><td data-i18n="row5_item"></td><td class="old-val" data-i18n="row5_old"></td><td class="arrow-col">→</td><td class="new-val" data-i18n="row5_new"></td></tr>
+        <tr><td data-i18n="row6_item"></td><td class="old-val" data-i18n="row6_old"></td><td class="arrow-col">→</td><td class="new-val" data-i18n="row6_new"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="section">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="steps_label"></div>
+    <h2 data-i18n="steps_heading"></h2>
+    <div class="steps-wrap">
+      <div class="step-row"><div class="step-num">1</div><div class="step-body"><h3 data-i18n="s1_title"></h3><p data-i18n="s1_body"></p></div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-body"><h3 data-i18n="s2_title"></h3><p data-i18n="s2_body"></p><div class="step-alert" data-i18n="s2_alert"></div></div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-body"><h3 data-i18n="s3_title"></h3><p data-i18n="s3_body"></p></div></div>
+      <div class="step-row"><div class="step-num">4</div><div class="step-body"><h3 data-i18n="s4_title"></h3><p data-i18n="s4_body"></p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <h2 data-i18n="ftr_heading"></h2>
+  <p data-i18n="ftr_sub"></p>
+  <a href="#" class="btn-primary" style="font-size:15px;padding:13px 32px" data-i18n="cta_primary"></a>
+  <div class="footnote" data-i18n="hero_footnote"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-links">
+    <a href="#" data-i18n="foot_terms"></a>
+    <a href="#" data-i18n="foot_privacy"></a>
+  </div>
+  <span class="copy">© 2026, Amazon.com Services LLC.</span>
+</footer>
+
+<script>
+const STRINGS = {
+  jp: {
+    swb_text: "FBAの納品配送料が15,000円割引、保管料や返送料が無料に",
+    swb_link: "今すぐチェック ›",
+    nav_start: "販売の始め方", nav_pricing: "料金", nav_fba: "フルフィルメント by Amazon",
+    nav_tools: "ツール・特典", nav_login: "ログイン",
+    page_title: "FBA新商品特典プログラム（2026）",
+    hero_badge: "2026年7月1日 新プログラム開始",
+    hero_desc: "FBA新商品特典プログラム（2026）は、新しいブランド商品のFBA立ち上げコストとリスクを大幅に軽減します。対象の新規FBA親ASINに、紹介料の割引（前払い・注文ごと適用）、在庫保管料免除、Vine・クーポンクレジット（各¥10,000・¥8,000）を提供。日本ではさらにVine自動登録（PSA）が加わります。",
+    cta_primary: "今すぐ事前登録する（6月10日〜）",
+    cta_secondary: "特典の詳細を見る",
+    hero_footnote: "*登録すると利用規約およびプログラム要件に同意したものとみなされます。",
+    stat1_num:"200点", stat1_label:"特典対象点数（1.0の2倍）",
+    stat2_num:"¥10,000", stat2_label:"Vineクレジット（JP）",
+    stat3_num:"¥8,000", stat3_label:"クーポンクレジット（JP）",
+    stat4_num:"120日間", stat4_label:"特典適用期間",
+    notice_text: "既存NSP 1.0セラーの方：2026年7月1日〜10月31日は新プログラムの特典が自動付与されます（手続き不要）。2026年10月31日以降も継続するには、更新後のプログラム規約への同意（登録確認）が必要です。",
+    benefits_label:"プログラム特典", benefits_heading:"新商品の立ち上げを、あらゆる面でサポート",
+    benefits_intro:"対象の新規FBA親ASINに対して、最初の在庫受領日から120日間、以下の特典が自動的に適用されます。",
+    tag_enhanced:"拡充", tag_new:"新設", tag_jp:"PSA・新設", jp_only:"日本限定",
+    t1_title:"紹介料の割引（前払い・注文ごと適用）",
+    t1_body:"最初の100点：現在の料率または10%のうち低い方を適用。次の100点：5%のうち低い方を適用。割引は注文ごとに即時適用（翌月付与方式から変更）。標準・非標準サイズ共通200点。",
+    t2_title:"在庫保管料・手数料の全額免除",
+    t2_body:"最初の200点・120日間：在庫保管手数料、低在庫レベル手数料（LIL）、在庫保管超過手数料（SUS）がすべて無料。無料返品・無料処分も200点・120日間。",
+    t3_title:"マーケティングクレジット新設",
+    t3_val:"¥10,000 + ¥8,000",
+    t3_body:"Vineクレジット¥10,000（親ASINあたり3〜10点の中間ティア登録に充当）＋クーポンクレジット¥8,000（変動手数料に充当）。出品日から60日以内に利用（最大105日）。",
+    t4_title:"Vine自動登録（PSA）",
+    t4_body:"対象ASINをVineに自動登録（1点）。手数料クレジット還元：出品価格相当（上限¥15,000）。14日間のオプトアウト期間あり。対象：ASP¥15,000以下・レビュー30件未満・Vine未登録・在庫5点以上。",
+    compare_label:"変更点", compare_heading:"NSP 1.0 との比較",
+    compare_intro:"2026年7月1日以降、新規ASINに対してはNSP 2.0の特典が適用されます。",
+    col_item:"項目", col_nsp1:"NSP 1.0（〜2026/6/30）", col_nsp2:"NSP 2.0（2026/7/1〜）",
+    row1_item:"手数料割引", row1_old:"配送代行手数料の約10%リベート（翌月付与）", row1_new:"紹介料を注文ごとに即時割引（上限10%→5%）",
+    row2_item:"特典対象点数", row2_old:"100点（標準）/ 50点（非標準）", row2_new:"200点（標準・非標準 共通）",
+    row3_item:"保管料・手数料免除", row3_old:"100点・120日間の保管無料のみ", row3_new:"200点・120日間の保管無料 ＋ LIL・SUS免除",
+    row4_item:"無料返品・処分", row4_old:"返品20点（180日）/ 処分100点（180日）", row4_new:"返品・処分ともに200点（120日）",
+    row5_item:"マーケクレジット", row5_old:"Vine手数料25%割引のみ", row5_new:"Vine ¥10,000 ＋ クーポン ¥8,000（60日以内）",
+    row6_item:"日本独自特典", row6_old:"なし", row6_new:"PSA：Vine自動登録 ＋ 手数料クレジット還元",
+    steps_label:"登録方法", steps_heading:"特典を受けるには",
+    s1_title:"大口出品サービスに登録", s1_body:"月額4,900円（税抜）と注文成約時の手数料のみです。",
+    s2_title:"FBA新商品特典プログラム（2026）に登録",
+    s2_body:"登録方法はセラータイプにより異なります。",
+    s2_alert:"⚠️ 既存NSP 1.0セラー：2026年7月1日〜10月31日は特典が自動付与されます（手続き不要）。10月31日以降も継続するには登録確認（規約同意）が必要です。新規・未加入セラーは6月10日より事前登録できます。",
+    s3_title:"対象のブランドASINをFBAに納品",
+    s3_body:"ブランド登録済みの新規FBA親ASINをAmazonフルフィルメントセンターに納品。在庫受領日から特典期間がスタートします。日本のセラー：PSAは入庫時に自動起動。14日以内にオプトアウト可能。",
+    s4_title:"特典の自動適用と活用",
+    s4_body:"対象商品の手数料割引がAmazonにより自動適用されます。セラーインセンティブダッシュボードでASIN別のクレジット残高・利用期限を確認できます。Vine・クーポンクレジットは60日以内にご利用ください。",
+    ftr_heading:"新しい商品を、もっと有利にローンチ。",
+    ftr_sub:"FBA新商品特典プログラム（2026）で、新規ブランド商品の立ち上げコストとリスクを最小化しましょう。",
+    foot_terms:"利用規約", foot_privacy:"プライバシー規約",
+  },
+  en: {
+    swb_text: "Save ¥15,000 on FBA inbound shipping — plus free storage and returns",
+    swb_link: "Check now ›",
+    nav_start:"Get started", nav_pricing:"Pricing", nav_fba:"Fulfillment by Amazon",
+    nav_tools:"Tools & programs", nav_login:"Sign in",
+    page_title:"FBA New Selection Program (2026)",
+    hero_badge:"New program launching July 1, 2026",
+    hero_desc:"The FBA New Selection Program (2026) significantly lowers the cost and risk of launching new branded products on FBA. Get instant referral fee discounts, storage fee waivers, and new marketing credits (Vine ¥10,000 + Coupon ¥8,000 in Japan). Japan sellers also receive automated Vine enrollment through PSA.",
+    cta_primary:"Pre-enroll now (from June 10)",
+    cta_secondary:"View program details",
+    hero_footnote:"*By registering, you agree to the program terms and requirements.",
+    stat1_num:"200 units", stat1_label:"Benefit threshold (2× NSP 1.0)",
+    stat2_num:"¥10,000", stat2_label:"Vine credit (Japan)",
+    stat3_num:"¥8,000", stat3_label:"Coupon credit (Japan)",
+    stat4_num:"120 days", stat4_label:"Benefit window",
+    notice_text:"For existing NSP 1.0 sellers: You will automatically receive NSP 2.0 benefits on new branded FBA ASINs from July 1 through October 31, 2026 — no action required. To continue receiving benefits after October 31, you must confirm your enrollment by accepting the updated program terms.",
+    benefits_label:"Program benefits", benefits_heading:"Comprehensive support for every stage of your launch",
+    benefits_intro:"The following benefits apply automatically to eligible new-to-FBA parent ASINs for 120 days from your first FBA inbound date.",
+    tag_enhanced:"Enhanced", tag_new:"New", tag_jp:"PSA · New", jp_only:"Japan only",
+    t1_title:"Referral fee discount (upfront, per-order)",
+    t1_body:"First 100 units: lower of your existing rate or 10% applied. Next 100 units: lower of your existing rate or 5%. Applied instantly at point of sale — no month-end accrual. Standard and non-standard sizes both covered under 200-unit threshold.",
+    t2_title:"Storage & fee waivers (200 units)",
+    t2_body:"Free monthly storage, Low-Inventory-Level fee waiver, and Storage Utilization Surcharge waiver on your first 200 units for 120 days. Free customer returns and liquidation also included (200 units, 120 days).",
+    t3_title:"New marketing credits",
+    t3_val:"¥10,000 + ¥8,000",
+    t3_body:"Vine credit ¥10,000 for Vine middle-tier enrollment (3–10 units per parent ASIN) + Coupon credit ¥8,000 toward variable coupon fees. Use within 60 days of listing (max 105 days with Vine pre-launch service).",
+    t4_title:"Vine Auto-Enrollment (PSA)",
+    t4_body:"1 unit per eligible parent ASIN auto-enrolled in Amazon Vine. Fee credit = listed price (capped at ¥15,000, excl. referral and FBA fees). 14-day opt-out window. Eligibility: ASP ≤ ¥15,000, <30 global reviews, no existing Vine enrollment, ≥5 units inventory.",
+    compare_label:"What's changing", compare_heading:"NSP 1.0 vs NSP 2.0",
+    compare_intro:"From July 1, 2026, new ASINs will receive NSP 2.0 benefits. Existing enrolled ASINs continue under NSP 1.0 until their benefit windows expire.",
+    col_item:"Feature", col_nsp1:"NSP 1.0 (until Jun 30, 2026)", col_nsp2:"NSP 2.0 (from Jul 1, 2026)",
+    row1_item:"Fee discount", row1_old:"~10% avg rebate on FBA fees (next-month credit)", row1_new:"Instant referral fee discount per order (10% → 5%)",
+    row2_item:"Unit threshold", row2_old:"100 units (std) / 50 units (non-std)", row2_new:"200 units — same for both sizes",
+    row3_item:"Storage waivers", row3_old:"100 units free storage only", row3_new:"200 units free storage + LIL + SUS waivers, 120 days",
+    row4_item:"Value recovery", row4_old:"20 units free returns (180d) / 100 units free liquidation (180d)", row4_new:"200 units free returns + liquidation (120 days)",
+    row5_item:"Marketing credits", row5_old:"25% off Vine enrollment fee only", row5_new:"Vine ¥10,000 + Coupon ¥8,000 (within 60 days)",
+    row6_item:"Japan bonus", row6_old:"None", row6_new:"PSA: Vine auto-enrollment + fee credit reimbursement",
+    steps_label:"How to enroll", steps_heading:"Getting started",
+    s1_title:"Register for a Professional selling account", s1_body:"¥4,900/month (excl. tax) plus per-sale fees.",
+    s2_title:"Enroll in FBA New Selection Program (2026)",
+    s2_body:"Enrollment path varies by seller type.",
+    s2_alert:"⚠️ Existing NSP 1.0 sellers: You will be auto-granted NSP 2.0 benefits from July 1 through October 31 (no action needed). To continue beyond October 31, confirm your enrollment by accepting the updated terms. New and unenrolled sellers can pre-enroll from June 10.",
+    s3_title:"Send your branded ASINs to FBA",
+    s3_body:"Send eligible branded new-to-FBA parent ASINs to an Amazon fulfillment center. Your benefit window starts from the first inventory received date. Japan sellers: PSA (Vine auto-enrollment) activates automatically on inbound — you have 14 days to opt out.",
+    s4_title:"Benefits apply automatically",
+    s4_body:"Referral fee discounts are applied instantly at point of sale. Track your ASIN-level credit balance and expiry dates in the Seller Incentives Dashboard. Use your Vine and Coupon credits within 60 days of listing.",
+    ftr_heading:"Launch your new products with less risk.",
+    ftr_sub:"The FBA New Selection Program (2026) reduces your upfront costs and protects your downside on every new branded launch.",
+    foot_terms:"Conditions of use", foot_privacy:"Privacy notice",
+  },
+  cn: {
+    swb_text: "FBA入库运费减免15,000日元，仓储费和退货费免费",
+    swb_link: "立即查看 ›",
+    nav_start:"开始销售", nav_pricing:"费用", nav_fba:"亚马逊物流（FBA）",
+    nav_tools:"工具与优惠", nav_login:"登录",
+    page_title:"FBA新品扶持计划（2026）",
+    hero_badge:"2026年7月1日 新计划正式启动",
+    hero_desc:"FBA新品扶持计划（2026）大幅降低在FBA上推出新品牌商品的成本与风险。享受即时推荐费折扣（按订单实时抵扣）、仓储费免除、全新营销积分（日本：Vine ¥10,000 + 优惠券 ¥8,000）。日本卖家还可享受PSA Vine自动注册服务。",
+    cta_primary:"立即预先注册（6月10日起）",
+    cta_secondary:"查看计划详情",
+    hero_footnote:"*注册即视为同意计划条款及要求。",
+    stat1_num:"200件", stat1_label:"优惠适用件数（NSP 1.0的2倍）",
+    stat2_num:"¥10,000", stat2_label:"Vine积分（日本）",
+    stat3_num:"¥8,000", stat3_label:"优惠券积分（日本）",
+    stat4_num:"120天", stat4_label:"优惠适用期限",
+    notice_text:"现有NSP 1.0卖家：2026年7月1日至10月31日期间，新品牌FBA ASIN将自动享受2.0计划优惠（无需操作）。2026年10月31日之后如需继续享受优惠，须确认注册（同意更新后的计划条款）。",
+    benefits_label:"计划优惠", benefits_heading:"全面支持您的新品上架",
+    benefits_intro:"以下优惠自首次FBA入库日起120天内，自动适用于符合条件的新品FBA父ASIN。",
+    tag_enhanced:"升级", tag_new:"新增", tag_jp:"PSA · 新增", jp_only:"仅限日本",
+    t1_title:"推荐费折扣（预付・按订单实时抵扣）",
+    t1_body:"前100件：适用现有费率或10%中较低者。后100件：适用5%中较低者。折扣在结算时实时抵扣（不再采用次月返利方式）。标准尺寸与非标准尺寸统一适用200件上限。",
+    t2_title:"仓储费及手续费全额减免",
+    t2_body:"前200件・120天内：月度仓储费、低库存水平费（LIL）、超储附加费（SUS）全部免除。免费退货处理及清仓处理同样适用200件・120天。",
+    t3_title:"全新营销积分",
+    t3_val:"¥10,000 + ¥8,000",
+    t3_body:"Vine积分¥10,000（用于每个父ASIN的3至10件中级层级注册）＋优惠券积分¥8,000（用于优惠券变动手续费）。须在上架后60天内使用（最长105天）。",
+    t4_title:"Vine自动注册（PSA）",
+    t4_body:"每个符合条件的父ASIN自动注册Vine（1件）。费用积分返还：相当于上架价格（上限¥15,000，不含推荐费及FBA配送费）。有14天退出期。条件：ASP≤¥15,000・全球评论<30条・未注册Vine・库存≥5件。",
+    compare_label:"主要变更", compare_heading:"NSP 1.0 与 NSP 2.0 对比",
+    compare_intro:"2026年7月1日起，新ASIN将适用NSP 2.0优惠。已注册NSP 1.0的ASIN继续享受1.0优惠直至期满。",
+    col_item:"项目", col_nsp1:"NSP 1.0（至2026/6/30）", col_nsp2:"NSP 2.0（2026/7/1起）",
+    row1_item:"费用折扣", row1_old:"FBA配送费约10%返利（次月到账）", row1_new:"推荐费按订单实时折扣（上限10%→5%）",
+    row2_item:"优惠件数", row2_old:"100件（标准）/ 50件（非标准）", row2_new:"200件（标准与非标准统一）",
+    row3_item:"仓储费减免", row3_old:"仅100件免费仓储", row3_new:"200件免费仓储 ＋ LIL・SUS减免，120天",
+    row4_item:"价值回收", row4_old:"免费退货20件（180天）/ 免费清仓100件（180天）", row4_new:"退货・清仓均为200件（120天）",
+    row5_item:"营销积分", row5_old:"仅Vine注册费75折优惠", row5_new:"Vine ¥10,000 ＋ 优惠券 ¥8,000（60天内）",
+    row6_item:"日本专属优惠", row6_old:"无", row6_new:"PSA：Vine自动注册 ＋ 费用积分返还",
+    steps_label:"注册方式", steps_heading:"如何享受优惠",
+    s1_title:"注册大口销售计划", s1_body:"月费4,900日元（不含税）及每笔成交手续费。",
+    s2_title:"注册FBA新品扶持计划（2026）",
+    s2_body:"注册方式因卖家类型而异。",
+    s2_alert:"⚠️ 现有NSP 1.0卖家：2026年7月1日至10月31日将自动享受2.0优惠（无需操作）。10月31日之后如需继续，须确认注册（同意更新条款）。新卖家及未注册卖家可从6月10日起预先注册。",
+    s3_title:"将符合条件的品牌ASIN发货至FBA",
+    s3_body:"将已注册品牌的新品FBA父ASIN发货至亚马逊运营中心，自首次入库日起优惠期开始计算。日本卖家：PSA（Vine自动注册）将在入库时自动启动，有14天退出期。",
+    s4_title:"优惠自动生效",
+    s4_body:"符合条件商品的推荐费折扣将在下单时自动抵扣。可在卖家激励仪表板中查看各ASIN的积分余额及到期日期。Vine及优惠券积分请在上架后60天内使用。",
+    ftr_heading:"以更低风险推出新品。",
+    ftr_sub:"FBA新品扶持计划（2026）帮您降低新品牌商品上架的前期成本与风险。",
+    foot_terms:"使用条件", foot_privacy:"隐私声明",
+  }
+};
+
+function setLang(lang) {
+  // Update buttons
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.documentElement.lang = lang === 'jp' ? 'ja' : lang === 'cn' ? 'zh' : 'en';
+
+  // Apply all strings
+  const s = STRINGS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (s[key] !== undefined) el.textContent = s[key];
+  });
+
+  // PSA tile: show/hide JP badge only when in JP mode
+  const tile = document.getElementById('tile-psa');
+  if (tile) {
+    tile.style.opacity = '1';
+    tile.style.border = lang === 'jp' ? '1.5px solid #f0c040' : '1.5px solid #d5e3f0';
+    tile.style.background = lang === 'jp' ? '#fffdf5' : '#fff';
+  }
+
+  // Nav logo text
+  const logoTexts = { jp: 'amazon <span style="color:var(--orange)">出品サービス</span>', en: 'amazon <span style="color:var(--orange)">seller services</span>', cn: 'amazon <span style="color:var(--orange)">卖家服务</span>' };
+  const logo = document.querySelector('.nav-logo-text');
+  if (logo) logo.innerHTML = logoTexts[lang];
+}
+
+// Init on load
+setLang('jp');
+</script>
+</body>
+</html>
